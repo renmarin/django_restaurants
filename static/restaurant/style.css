@@ -1,0 +1,21 @@
+.bodyyy {
+    background-color: lightgrey;
+    border: 4px solid purple;
+    padding: 1.3rem;
+    max-width: 600px;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border-radius: .5rem;
+}
+.blocktext {
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+}
+.title {
+    text-align: center;
+    width: 100%;
+}

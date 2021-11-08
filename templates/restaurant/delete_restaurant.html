@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}">
+</head>
+<body class="bodyyy">
+    <div><h2>Confirm deletion of the {{ restaurant_name }} restaurant </h2></div>
+    <form action="{% url 'restaurant:delete_restaurant' restaurant_name %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete {{ restaurant_name }}">
+        <a href="{% url 'restaurant:index' %}"><input type="button" value="Cancel"></a>
+    </form>
+</body>
+</html>

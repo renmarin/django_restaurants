@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}">
+</head>
+<body class="bodyyy">
+    <h2>Edit {{ restaurant_name }}</h2>
+    <form action="{% url 'restaurant:edit_restaurant' restaurant_name %}" method="post">
+        {% csrf_token %}
+        {{ NameOfNewRestaurant }}
+        <input type="submit" value="Edit {{ restaurant_name }}">
+        <a href="{% url 'restaurant:index' %}"><input type="button" value="Cancel"></a>
+    </form>
+</body>
+</html>

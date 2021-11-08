@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}">
+</head>
+<body class="bodyyy">
+    <h2 class="title">Edit {{ menu_item_name }} of {{ restaurant_name }}</h2>
+    <div class="blocktext">
+        <form action="{% url 'restaurant:edit_menu_item' restaurant_name menu_item_id %}" method="post">
+            {% csrf_token %}
+            {% for field in NewMenuItem %}
+                <div class="fieldWrapper">
+                    {{ field.label }}
+                    {{ field }}
+                </div>
+            {% endfor %}
+            <input type="submit" value="Edit {{ menu_item_name }}">
+            <a href="{% url 'restaurant:menu' restaurant_name %}"><input type="button" value="Cancel"></a>
+        </form>
+    </div>
+</body>
+</html>

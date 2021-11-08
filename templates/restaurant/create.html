@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Restaurant</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}">
+</head>
+<body class="bodyyy">
+    <h1>Create New Restaurant</h1>
+    <form action="{% url 'restaurant:create_restaurant' %}" method="post">
+        {% csrf_token %}
+        {{ NameOfNewRestaurant }}
+        <input type="submit" value="Create Restaurant">
+        <a href="{% url 'restaurant:index' %}"><input type="button" value="Cancel"></a>
+    </form>
+</body>
+</html>

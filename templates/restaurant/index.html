@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurants</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}">
+</head>
+<body class="bodyyy">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    <br><br>
+    <h1>Restaurants</h1>
+    <a href="{% url 'restaurant:create_restaurant' %}"><button>Create Restaurant</button></a>
+    <br>
+    <br>
+    {% for restaurant in restaurants%}
+    <a href="{% url 'restaurant:menu' restaurant %}">{{ restaurant }}</a><br>
+        <a href="{% url 'restaurant:edit_restaurant' restaurant %}">Edit</a><br>
+        <a href="{% url 'restaurant:delete_restaurant' restaurant %}">Delete</a><br><br>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Menu Item</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}">
+</head>
+<body class="bodyyy">
+    <h2>Enter a name of the new Menu Item for {{ restaurant_name }} restaurant</h2>
+    <form action="{% url 'restaurant:create_menu_item' restaurant_name %}" method="post">
+        {% csrf_token %}
+<!--        {{ NewMenuItem.name }} <br>-->
+<!--        {{ NewMenuItem.price }} <br>-->
+<!--        {{ NewMenuItem.description }} <br>-->
+<!--        {{ NewMenuItem.course }} <br>-->
+
+        {% for field in NewMenuItem %}
+            <div class="fieldWrapper">
+                {{ field.label }}
+                {{ field }}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Create">
+        <a href="{% url 'restaurant:menu' restaurant_name %}"><input type="button" value="Cancel"></a>
+    </form>
+</body>
+</html>

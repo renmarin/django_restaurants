@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'restaurant/style.css' %}">
+</head>
+<body class="bodyyy">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+    <br><br>
+    <a href="{% url 'restaurant:menu_json' restaurant_name %}"><button>As JSON</button></a>
+    <h1>{{ restaurant_name }}</h1>
+    <a href="{% url 'restaurant:create_menu_item' restaurant_name %}"><button>Create Menu Item</button></a>
+    <br>
+    <br>
+    <div>
+        {% if menu %}
+            {% for menu_item in menu %}
+                {{ menu_item.name }} - {{ menu_item.price }} <br>
+                {{ menu_item.description }} <br>
+                {{ menu_item.course }} <br>
+                <a href="{% url 'restaurant:edit_menu_item' restaurant_name menu_item.id %}">Edit</a> <br>
+                <a href="{% url 'restaurant:delete_menu_item' restaurant_name menu_item.id %}">Delete</a> <br><br>
+            {% endfor %}
+        {% else %}
+            <h2>You currently have no menu items.</h2>
+        {% endif %}
+    </div>
+    <a href="{% url 'restaurant:index' %}"><button>Back to all restaurants</button></a>
+</body>
+</html>
